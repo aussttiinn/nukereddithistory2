@@ -26,15 +26,21 @@
   "homepage": "https://github.com/sr33/ares#readme",
   "devDependencies": {
     "@types/chrome": "0.0.86",
+    "@types/firefox": "^0.0.31",
+    "@types/firefox-webext-browser": "^111.0.1",
+    "@types/webextension-polyfill": "^0.10.1",
     "copy-webpack-plugin": "^11.0.0",
     "html-loader": "^0.5.5",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
+    "vue": "^3.3.4",
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "@types/firefox": "^0.0.31",
     "axios": "^1.4.0",
-    "qs": "^6.7.0"
+    "qs": "^6.7.0",
+    "webextension-polyfill": "^0.10.0"
   }
 }
