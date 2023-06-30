@@ -8,12 +8,12 @@ enum Mode {
 }
 
 export default class Profile {
-    private userName: string = '..loading';
+    private userName: string = '...Loading';
     private comments: Comment[] = [];
     private posts: Post[] = [];
     private modhash: string = '';
     private currentComment: any = {
-        action: '..loading',
+        action: '...Loading',
         comment: ''
     };
     private mode!: Mode;
