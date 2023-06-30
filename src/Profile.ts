@@ -66,7 +66,7 @@ export default class Profile {
 
     public async setup() {
         if (this.sortIndex >= this.sort.length) {
-            this.currentComment.action = `All ${this.mode} deleted!`
+            this.currentComment.action = `All ${this.mode} deleted! ✅`
             this.currentComment.comment = undefined;
             // alert(`Nuke Reddit History tried it's best to delete all ${this.mode}.\nFor Error resolution, please make a post on the subreddit r/NukeRedditHistory`);
             return
