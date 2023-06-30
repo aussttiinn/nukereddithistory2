@@ -36,7 +36,8 @@ Browser Extension that automates api requests to overwrite & delete comments, de
 
 1. navigate to `about:debugging#/runtime/this-firefox`
 1. click `[Load Temporary Add-on]`
-1. navigate to `/dist` and click select.
+1. navigate to `/dist` and open.
+1. upload the `manifest.json` file 
 
 ## Support the dev
 
