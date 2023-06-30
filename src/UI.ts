@@ -1,26 +1,27 @@
-import axios, { AxiosError } from 'axios';
 import * as Vue from './static_resources/vue';
 import Profile from './Profile';
 
 export default class UI {
-    readonly templateAbsoluteUrl = chrome.runtime.getURL('/static_resources/template.html');
+    readonly templateAbsoluteUrl = browser.runtime.getURL('/static_resources/template.html');
     readonly body = document.getElementsByTagName('body')[0];
     public vueApp: any;
     public profile: Profile = new Profile();
 
     public async injectUI() {
-        const html = await axios
-            .get(this.templateAbsoluteUrl)
-            .then((r) => {
-                return r.data;
-            })
-            .catch((error: AxiosError) => {
-                console.error(`error while trying to inject ui -> ${error}`);
-            });
-        this.body.className = ''; // remove existing styles
-        this.body.innerHTML = html;
-        this.mountVueApp();
-        this.profile.setup();
+        try {
+            const response = await fetch(this.templateAbsoluteUrl);
+            if (response.ok) {
+                const html = await response.text();
+                this.body.className = ''; // remove existing styles
+                this.body.innerHTML = html;
+                this.mountVueApp();
+                this.profile.setup();
+            } else {
+                console.error('Error while trying to inject UI:', response.status, response.statusText);
+            }
+        } catch (error) {
+            console.error('Error while trying to inject UI:', error);
+        }
     }
 
     private mountVueApp() {
@@ -30,7 +31,7 @@ export default class UI {
             data: {
                 profile: this.profile,
             },
-            mounted: () => {
+            mounted() {
                 console.log("--: Nuke Reddit History initiated :--");
             }
         });

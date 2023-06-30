@@ -13,7 +13,7 @@ function modify(buffer) {
   manifest.version = package.version;
 
   // pretty print to JSON with two spaces
-  manifest_JSON = JSON.stringify(manifest, null, 2);
+  const manifest_JSON = JSON.stringify(manifest, null, 2);
   return manifest_JSON;
 }
 
@@ -38,8 +38,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
+    new CopyWebpackPlugin({
+      patterns: [{
         from: "./src/manifest.json",
         to: "./manifest.json",
         transform(content, path) {
@@ -49,7 +49,7 @@ module.exports = {
       {
         from: "./src/static_resources/",
         to: "./static_resources/"
-      }
-    ])
+      }]
+    })
   ]
 };
